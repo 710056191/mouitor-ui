@@ -1,0 +1,45 @@
+// element-ui dialog 作为应用容器的样式
+/*
+宽度
+  设置最大宽度，最小宽度
+      宽度过大， dialog 维持最大宽度
+      宽度过小， dialog 维持最小宽度，避免被压缩过窄
+      中间宽度， 900px
+ 内容过高过宽出现滚动条
+ */
+@import "~@/styles/variables.scss";
+@import "~include-media/dist/include-media";
+
+@at-root {
+  // el-dialog__header 默认高度，写在这里用于计算
+  $-box-header-height: 54px;
+
+  // el-dialog__body 默认 padding，写在这里用于计算
+  $-box-body-padding-horizontal: 20px;
+  $-box-body-padding-vertical: 30px;
+
+  .el-dialog.is-page-box {
+    width: initial; // 覆盖默认宽度设置
+    max-width: calc(100% - 40px);
+    border-radius: 6px;
+
+    & {
+      width: min-content;
+    }
+
+    // 超过 XL 时，设置一个固定的最大宽度
+    @include media(">xLarge") {
+      max-width: 1400px;
+    }
+
+    /* 包裹 内容 view 的 ElScrollbar 组件根元素 */
+    .box-scrollbar {
+      height: 100%;
+
+      &__wrap {
+        overflow-x: hidden;
+        max-height: calc(80vh - #{$-box-header-height + 2 * $-box-body-padding-vertical});
+      }
+    }
+  }
+}

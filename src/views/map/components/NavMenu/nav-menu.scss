@@ -1,0 +1,160 @@
+// 导航菜单
+
+@import "~@/styles/variables.scss";
+@import "~include-media/dist/include-media";
+
+.nav-menu {
+  $border-color: #ebebeb;
+  $bg-color: #fff;
+  $bg-header-color: $page-color-primary;
+
+  $ctrl-bar-color-bg: $page-color-primary;
+  $ctrl-bar-color-text: white;
+
+  @mixin outside-border {
+    border: 1px solid $border-color;
+    //box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+  }
+
+  .nav-header {
+    position: relative;
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    background-color: $bg-header-color;
+    color: white;
+    cursor: move;
+
+    .icon-btn-fold {
+      position: absolute;
+      right: 10px;
+      top: 7px;
+      cursor: pointer;
+      line-height: 1em;
+    }
+  }
+
+  .nav-menu__inner {
+    border: 1px solid $border-color;
+    border-top: none;
+    border-right: none;
+    border-radius: 3px;
+  }
+
+  .nav-menu__box {
+    // 菜单维持一个最小高度，假如屏幕高度够大的情况下
+    @include media("height>=380px") {
+      min-height: 200px;
+    }
+  }
+
+  .el-submenu__title {
+    .svg-icon {
+      margin-right: 16px;
+    }
+  }
+
+  .menu-item__no-sub-menu {
+    padding-left: 20px;
+  }
+
+  .nav-menu-item-title {
+    font-size: 15px;
+  }
+
+  > .el-scrollbar {
+    > .el-scrollbar__bar {
+      &.is-horizontal {
+        height: 8px;
+      }
+
+      &.is-vertical {
+        width: 8px;
+      }
+    }
+  }
+
+  .nav-control-bar {
+    position: absolute;
+    width: 35px;
+    // height: 100px;
+    top: 50%;
+    left: 100%;
+    transform: translate(-2px, -50%);
+
+    background-color: $ctrl-bar-color-bg;
+    border: 1px solid $border-color;
+    border-left-width: 0;
+    border-radius: 3px;
+
+    text-align: center;
+    box-sizing: border-box;
+    padding: 8px 0 2px;
+    font-size: 14px;
+    letter-spacing: 3px;
+
+    .inner {
+      display: inline-block;
+      writing-mode: vertical-lr;
+      color: $ctrl-bar-color-text;
+    }
+
+    .icon {
+      color: $ctrl-bar-color-text;
+      transform: scale(1.2, 0.8);
+      letter-spacing: 0;
+    }
+  }
+
+  &.float-right {
+    .nav-control-bar {
+      left: 0;
+
+      transform: translate(calc(-100% + 2px), -50%);
+
+      border-left-width: 1px;
+      border-right-width: 0;
+
+      .icon {
+        transform: scale(1.2, 0.8) rotate(180deg);
+      }
+    }
+  }
+}
+
+/* 总体布局 */
+.nav-menu {
+  position: absolute;
+  width: 210px;
+  transform: translateX(-99%);
+  transition: transform 0.2s ease-in;
+
+  .menu-scrollbar__wrap {
+    //max-height: 430px;
+    max-height: calc(85vh - 90px);
+  }
+
+  // 展开
+  &.stick {
+    transform: translateX(0)
+  }
+
+  &:not(.unfold):hover {
+    transform: translateX(0);
+  }
+
+  // 在靠近右边的情况
+  &.float-right {
+    transform: translateX(99%);
+
+    // 展开
+    &.stick {
+      transform: translateX(0)
+    }
+
+    &:not(.unfold):hover {
+      transform: translateX(0);
+    }
+  }
+}

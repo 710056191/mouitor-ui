@@ -1,0 +1,15 @@
+/* 自定义 Element UI 样式 */
+
+/*
+自定义流程
+  - 可以通过修改 Element scss 变量达到目的的，在 `./common/var.scss` 里面定义
+  - 需要手动调整的，在该文件夹新建对应的模块，然后引入这里
+    eg: `./table.scss` `@import './table.scss';`
+ */
+
+@import './common/var.scss'; // 配置 Element UI 主题的 scss 变量
+@import '~element-ui/packages/theme-chalk/src/index'; // 导入主题原 scss
+
+// 覆盖 Element UI 样式
+
+@import './table.scss';

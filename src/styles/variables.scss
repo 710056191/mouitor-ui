@@ -1,0 +1,48 @@
+
+// element-ui 全部变量参考
+// @import '~element-ui/packages/theme-chalk/src/common/var.scss';
+
+// page
+$page-color-primary: #0e1587;
+$page-color-auxiliary: #f3f4f8;
+
+$page-color-text-primary: $page-color-primary;
+//$page-color-text-regular: #606266;
+//$page-color-text-secondary: #909399;
+//$page-color-text-placeholder: #C0C4CC;
+
+$page-border-color-base: #dcdfe6;
+
+// sidebar
+$menuText:#bfcbd9;
+$menuActiveText:#409EFF;
+$subMenuActiveText:#f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+
+$menuBg:#304156;
+$menuHover:#263445;
+
+$subMenuBg:#1f2d3d;
+$subMenuHover:#001528;
+
+$sideBarWidth: 210px;
+
+// 媒体查询端点变量
+$breakpoints: (
+  'xs': 600px,
+  'sm': 1024px,
+  'md': 1440px,
+  'lg': 1920px,
+);
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}

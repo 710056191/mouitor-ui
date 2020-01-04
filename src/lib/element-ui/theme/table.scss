@@ -1,0 +1,78 @@
+@import "~element-ui/packages/theme-chalk/src/mixins/mixins";
+
+.el-table.skin-simple {
+  th {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.el-table {
+
+  $lc-color: #1f2f3d;
+
+  $lc-header-font-color: #fff;
+  $lc-header-background-color: #454ead;
+
+  $lc-row-striped-background-color: #f8f9fd;
+  $lc-row-hover-background-color: #dddddd;
+
+  $lc-border-color: $lc-row-striped-background-color;
+  $lc-border: 1px solid $lc-border-color;
+
+  $lc-body-font-size: 16px;
+
+  // ------
+
+  color: $lc-color;
+
+  thead {
+    color: $lc-header-font-color;
+  }
+
+  th {
+    background-color: $lc-header-background-color;
+  }
+
+  th.is-leaf, td {
+    border-bottom: $lc-border;
+  }
+
+  .el-table__body-wrapper {
+    font-size: $lc-body-font-size;
+  }
+
+  @include m(striped) {
+    & .el-table__body {
+      & tr.el-table__row--striped {
+        td {
+          background: $lc-row-striped-background-color;
+        }
+      }
+    }
+  }
+
+  @include m(enable-row-hover) {
+    .el-table__body tr:hover > td {
+      background-color: $lc-row-hover-background-color;
+    }
+  }
+}
+
+.el-table {
+  @include m(outline-border) {
+    border: 1px solid #d3d9fd;
+    border-top: none;
+    border-bottom: none;
+
+    &.el-loading-parent--relative {
+      border-color: transparent;
+    }
+
+    $lc-row-divide-border: 2px solid #dae4ff;
+    tr:nth-child(7n) {
+      > td {
+        border-bottom: $lc-row-divide-border;
+      }
+    }
+  }
+}

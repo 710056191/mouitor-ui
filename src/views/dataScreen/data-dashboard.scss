@@ -1,0 +1,142 @@
+.data-dashboard-view {
+  $board-text-color: #288dff;
+  $board-bg-color: #0b0d30;
+
+  $board-color-1: #18478b; // 图表坐标轴颜色
+  $board-color-2: #288dff; // 模块边框四角高亮
+
+  // #489eff // 图表标题颜色
+  // #288dff // 标签文字颜色
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 18px 15px 4px;
+
+  min-width: 1900px;
+
+
+  color: $board-text-color;
+  background-color: $board-bg-color;
+
+  .data-dashboard-wrap {
+    position: relative;
+    margin: auto;
+    padding: 0 36px 10px;
+    height: 100%;
+  }
+
+  .data-dashboard-boundary {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    &:before, &:after {
+      content: ' ';
+      display: block;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("~@/assets/data-dashboard/border-top.png") 30px 0,
+      url("~@/assets/data-dashboard/border-left.png") 0 15px,
+      url("~@/assets/data-dashboard/border-bottom.png") 30px 1031px;
+    }
+
+
+    &:before, &:after {
+      background-repeat: no-repeat;
+    }
+
+    &:after {
+      left: initial;
+      right: 0;
+      transform: scaleX(-1);
+    }
+  }
+
+  .dashboard-header {
+    position: relative;
+    text-align: center;
+    color: white;
+
+    .header-title {
+      margin: 0;
+      font-weight: normal;
+      font-size: 32px;
+      letter-spacing: 6px;
+    }
+
+    .time-area {
+      position: relative;
+      display: inline-block;
+      width: 360px;
+      line-height: 30px;
+
+      border-width: 2px;
+      border-color: #288dff;
+      border-style: solid;
+      border-radius: 4px;
+
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 3px;
+
+      margin-top: 15px;
+
+      p {
+        margin: 0;
+        display: inline;
+      }
+
+      p + p {
+        margin-left: 30px;
+      }
+    }
+  }
+
+  .dashboard-main {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 16px 0;
+    height: 90%;
+    position: relative;
+
+    .panel-vertical {
+      height: 100%;
+      flex: 4;
+      >.data-com-wrapper{
+        height: 92%;
+      }
+    }
+    .panel-main {
+      flex: 1;
+      // height: 80%;
+      // position: absolute;
+      // top: 10%;
+      // left: 2%;
+      // z-index: 2;
+      >.data-com-wrapper>.data-com-box{
+        // background: rgba(#02193a,0.7);
+        >.content-box{
+          height: 90%;
+        }
+      }
+    }
+
+    // .panel-vertical:nth-child(1),.panel-vertical:nth-child(3){
+    //   width: 30%;
+    // }
+    .data-com-wrapper {
+      margin: 18px 0;
+      height: 100%;
+    }
+    
+  }
+}

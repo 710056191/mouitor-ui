@@ -1,0 +1,55 @@
+@import "~@/styles/variables.scss";
+
+/* 覆盖 element-ui el-tabs 样式 */
+.map-panel {
+  $local-color-bg: $page-color-primary;
+  $local-color-active: white;
+
+  .el-tabs {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+  }
+
+  .el-tabs__header {
+    background-color: $local-color-bg;
+    border: none;
+
+    .el-tabs__item {
+      color: $local-color-active;
+    }
+  }
+
+  .el-tabs__nav-wrap {
+    padding: 0 25px;
+
+    &:after {
+      // active-bar 所在的整个 bar
+      background-color: $local-color-bg;
+    }
+  }
+
+  .el-tabs__item {
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+  }
+
+  .el-tabs__content {
+    padding: 0 15px 20px;
+  }
+
+  .el-tabs__active-bar {
+    // active-bar
+    background-color: $local-color-active;
+  }
+}
+
+.map-panel {
+  .panel-tabs {
+    min-width: 380px;
+    font-size: 12px;
+  }
+}
+
+.map-panel {
+  background: white;
+}

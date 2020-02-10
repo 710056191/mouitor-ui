@@ -1,0 +1,22 @@
+@import "~leaflet.polylinemeasure/Leaflet.PolylineMeasure.css";
+@import "~@/styles/variables.scss";
+
+.polyline-measure-unicode-icon {
+  line-height: 26px;
+  text-align: center;
+}
+
+.bigemap-bar a.polyline-measure-unicode-icon {
+  font-weight: bold;
+  color: $page-color-text-primary;
+}
+
+.polyline-measure-tooltip {
+  font-size: 12px;
+}
+
+.polyline-measure-popupTooltip {
+  opacity: 1!important; // 覆盖 js 里硬编码在 style 的 0.7
+  line-height: 14px;
+  font-size: 14px;
+}

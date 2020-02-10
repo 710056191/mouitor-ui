@@ -1,0 +1,35 @@
+@mixin r($block) {
+  $B: 'sf-' + $block;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@include r(table-top-toolbar) {
+  float: right;
+  margin-bottom: 10px;
+
+  .inner {
+    text-align: right;
+  }
+}
+
+@include r(table-heel-pagination) {
+  margin-top: 10px;
+  text-align: right;
+
+  .el-pagination__rightwrapper {
+    margin-left: 50px;
+  }
+}
+
+// 原来的 filter-container
+// 后续要废掉， 改用 SuiteTable 组件代替
+@include r(filter-container) {
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,131 @@
+@at-root {
+  $lc-header-bg-color: #0b0d30;
+
+  $lc-header-height: 18px;
+
+  $lc-border-color: #288dff;
+
+  .data-com-wrapper {
+    position: relative;
+    padding-top: $lc-header-height / 2;
+  }
+
+  .data-com-box {
+    position: relative;
+    border: 1px solid $lc-border-color;
+
+    /* VueECharts 组件根元素样式 */
+    .echarts {
+      width: 100%;
+      height: 200px;
+    }
+
+    .header-box {
+      position: absolute;
+      height: $lc-header-height;
+      line-height: $lc-header-height;
+      padding: 0 20px;
+      font-size: 16px;
+
+      // 位置控制
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      // 背景覆盖
+      //  设置与页面一致的背景色，覆盖模块上边框中间部分
+      background: $lc-header-bg-color;
+      border: 1px;
+
+      // 通过伪元素，画左右的 3/4 边框的矩形
+      &:before, &:after {
+        position: absolute;
+        top: 0;
+        content: ' ';
+        display: inline-block;
+        width: 4px;
+        height: $lc-header-height;
+
+        border: 1px solid $lc-border-color;
+      }
+
+      &:before {
+        left: 0;
+        border-right: none;
+      }
+
+      &:after {
+        right: 0;
+        border-left: none;
+      }
+
+      .title-text {
+        margin: 0;
+        word-break: keep-all;
+        letter-spacing: 2px;
+        color: white;
+      }
+    }
+
+    .content-box {
+      padding: (12px + $lc-header-height /2) 24px 12px;
+    }
+
+    &.nest-border {
+      .content-box {
+        margin: 18px;
+        border: 1px solid $lc-border-color;
+      }
+    }
+  }
+
+  .data-com-rim {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+
+    @mixin angle {
+      &:before {
+        content: ' ';
+        display: inline-block;
+        border-color: $lc-border-color;
+        border-width: 0;
+        border-style: solid;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    @mixin angle-direction($direction) {
+      &:before {
+        border-#{$direction}-width: 4px;
+        #{$direction}: 0;
+      }
+    }
+
+    .angle {
+      @include angle;
+
+      &-top {
+        @include angle-direction(top)
+      }
+
+      &-right {
+        @include angle-direction(right)
+      }
+
+      &-bottom {
+        @include angle-direction(bottom)
+      }
+
+      &-left {
+        @include angle-direction(left)
+      }
+
+    }
+  }
+}
